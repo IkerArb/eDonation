@@ -1,0 +1,30 @@
+<template name="detalle_blogPost">
+<style>
+  #nav-title{background-color: #507aac;}
+</style>
+  <div class="container noticia_container">
+    <div class="noticia_imagen">
+        <img clas="noti-img" src="{{imagen}}">
+        <div class="diagonal-background">
+          <!-- this is an empty element -->
+        </div>
+    </div>
+
+    <div class="noticia_text">
+      <h2>{{titulo}}</h2>
+      <p>
+        {{contenido}}
+      </p>
+      <div class="share">
+    		<a class="gplus-share social-wrapper" href="https://plus.google.com/share?url={{hrefPagina}}" target="_blank">
+    			<img alt="Share on Google+" height="24" src="https://www.gstatic.com/images/branding/google_plus/2x/ic_w_post_gplus_black_24dp.png" width="24">
+    		</a>
+    		<a class="fb-custom social-wrapper" href="https://www.facebook.com/dialog/share?app_id=284314675282557&display=popup&href={{hrefPagina}}&redirect_uri={{hrefPagina}}" target="_blank">
+    			<img alt="Share on Facebook" height="24" src="https://www.gstatic.com/images/icons/material/system/2x/post_facebook_black_24dp.png" width="24">
+    		</a>
+    	</div>
+
+    </div>
+  </div>
+  {{>boton_user}}
+</template>

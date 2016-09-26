@@ -1,0 +1,50 @@
+<template name="blog">
+<style>
+  #nav-title{background-color: #507aac;}
+</style>
+  <div class="row noticias">
+    <div class="col s12">
+      {{>blog_search}}
+    </div>
+  </div>
+  {{>boton_user}}
+</template>
+
+
+<template name="blog_search">
+  <div class="search_area">
+    <nav>
+     <div class="nav-wrapper">
+       <form>
+         <div class="input-field">
+           <input id="searchN" type="search" >
+           <label for="search"><i class="material-icons">search</i></label>
+           <i class="material-icons">close</i>
+         </div>
+       </form>
+     </div>
+    </nav>
+    <div class="row">
+      <div class="col s6">
+        <input id="fecha_desdeN" type="date" placeholder="Fecha inicial" class="datepicker">
+      </div>
+      <div class="col s6">
+        <input id="fecha_hastaN" type="date" placeholder="Fecha final" class="datepicker">
+      </div>
+    </div>
+  </div>
+  <ul class="collection collection_noticias">
+    {{#each blogs}}
+       {{>post}}
+    {{/each}}
+  </ul>
+</template>
+
+<!--Mismo template para noticias y avisos-->
+<template name="post">
+  <li class="collection-item avatar dismissable">
+        <img src="{{imagen}}" alt="" class="circle">
+        <p class="title">{{titulo}}</p>
+        <a href="detalle_noticia/{{_id}}" class="secondary-content valign-wrapper">{{date}}<i class="material-icons">chevron_right</i></a>
+ </li>
+</template>
