@@ -19,9 +19,9 @@ Meteor.startup(function() {
 	  { service: "facebook" },
 	  {
 	    $set: {
-	      appId: "284314675282557",
+	      appId: "1761523087442385",
 	      loginStyle: "popup",
-	      secret: "99bdd2acad1bcbee202667e6b5c508b6"
+	      secret: "a52d5dbefb63c6689ee12145b3887f6b"
 	    }
 	  }
 	);
@@ -31,8 +31,8 @@ Meteor.startup(function() {
 		{
 			$set:{
 			  service: "google",
-			  clientId: "55575290356-0hja7ruq3pm5f7b3qe8o8ev7f3re0d9a.apps.googleusercontent.com",
-			  secret: "d_VRYdEEKrkhM4wHtsPiNS8u"
+			  clientId: "661457512695-u9fkm6s3i8lkj7j6r40laekqjloi8op7.apps.googleusercontent.com",
+			  secret: "lJ9_Y-OGQqx3ScxWombCg4U_"
 			}
 		}
 	);
