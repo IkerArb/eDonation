@@ -17,7 +17,7 @@ Meteor.methods({
   // y le agregamos campos extra y mandamos email de verificación
   "createUserAdmin": function(doc){
     check(doc,Schemas.User);
-    doc.roles = ["funcionario"];
+    doc.roles = ["admin"];
     var newUser = Accounts.createUser({email:doc.email,password:doc.password,profile:doc.profile});
     Meteor.users.update({_id:newUser},{$set:{roles:doc.roles}});
     Accounts.sendVerificationEmail(newUser);
