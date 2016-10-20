@@ -1,36 +1,42 @@
 <template name="payment_method">
   <div class="container center-align">
-    <div class="row">
-      <div class="col s12">
-        <button class="pay-card">
-          <div class="row">
+    <div class="row pay-card">
+      <div class="col s6 offset-s3 no-margin-top z-depth-1">
+          <div class="row pay-card-details">
             <div class="col s4">
-              <i class="fa fa-credit-card" aria-hidden="true"></i>
+              <i class="fa fa-credit-card fa-2x" aria-hidden="true"></i>
             </div>
             <div class="col s4">
               <p>****-1234</p>
             </div>
             <div class="col s4">
-              <i class="fa fa-trash" aria-hidden="true"></i>
+              <button class="pay-card-button"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
             </div>
           </div>
-        </button>
       </div>
     </div>
-    <div class="row">
-      <div class="col s12">
-        <button class="pay-card">
-          <i class="fa fa-plus fa-3x" aria-hidden="true"></i>
-        </button>
+    <div class="row pay-card">
+      <div class="col s6 offset-s3 no-margin-top z-depth-1">
+          <button class="pay-card-button"><div class="row pay-card-details">
+            <div class="col s4 offset-s4">
+              <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </div>
+          </div></button>
       </div>
     </div>
-    <div class="row">
-      <div class="col s4">
-        <i class="fa fa-arrow-left fa-3x"></i>
-      </div>
-      <div class="col s4 offset-s4">
-        <i class="fa fa-arrow-right fa-3x"></i>
-      </div>
+  </div>
+
+  <!-- Modal Trigger -->
+  <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
     </div>
   </div>
 </template>
