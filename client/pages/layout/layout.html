@@ -153,6 +153,12 @@
         </span>
       </a>
     </li>
+		<li id="menu-item-simple" >
+			<a href="#" id="logout">
+				<i class="material-icons left" style="line-height:20px;height:30px">account_circle</i>
+					{{currentUserEmail}}
+			</a>
+		</li>
     <li id="menu-item-simple" >
       <a href="#" id="logout">
         <span class="item-title">
@@ -182,6 +188,12 @@
       </a>
     </li>
     {{#if currentUser}}
+			<li id="menu-item-simple" >
+				<a href="#" id="logout">
+					<i class="material-icons left" style="line-height:20px;height:30px">account_circle</i>
+						{{currentUserEmail}}
+				</a>
+			</li>
       <li id="menu-item-simple" >
         <a href="#" id="logout">
           <span class="item-title">
