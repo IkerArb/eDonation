@@ -1,3 +1,6 @@
+import {Tarjeta} from '/lib/collections/tarjetas.js';
+
+
 var errorResponseHandler, successResponseHandler, tokenParams;
 Conekta.setPublishableKey("key_FeHir2FBvSD4hTs29A7zJRA");
 successResponseHandler = function(token) {
@@ -11,13 +14,14 @@ successResponseHandler = function(token) {
         console.log(error.reason);
       }else{
         console.log(result);
-        Tarjetas.insert({
+        var docTarjeta = {
           token:result._id,
-          lastDigits:tokenParams.card.number.slice(-4),
-          tarjetaBrand:Conekta.card.getBrand(tokenParams.card.number),
-          cardToken:token,
-          clientToken:result
-        });
+          last_digits:tokenParams.card.number.slice(-4),
+          brand:Conekta.card.getBrand(tokenParams.card.number),
+          card_token:token,
+          client_token:result
+        };
+        Meteor.call("altaTarjeta",docTarjeta);
       }
 
     });
@@ -30,7 +34,7 @@ errorResponseHandler = function(error) {
 };
 
 Template.payment_method.rendered = function(){
-$('.modal-trigger').leanModal();
+  $('.modal-trigger').leanModal();
 };
 
 Template.payment_method.events({
