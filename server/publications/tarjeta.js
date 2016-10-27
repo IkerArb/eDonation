@@ -1,5 +1,5 @@
 import {Meteor} from "meteor/meteor";
-import {Tarjeta} from "/lib/collections/tarjeta.js";
+import {Tarjeta} from "/lib/collections/tarjetas.js";
 
 //Meteor.publish("blogPosts", function() {
 //	return Tarjeta.find({}, {sort:{createdAt:-1}});
@@ -11,4 +11,4 @@ import {Tarjeta} from "/lib/collections/tarjeta.js";
 Meteor.publish("userTarjetas", function() {
   return Tarjeta.find({createdBy:this.userId},
     {last_digits:true, brand:true});
-}
+});

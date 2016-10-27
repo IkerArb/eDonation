@@ -1,4 +1,4 @@
-import {Tarjeta} from "/lib/collections/tarjeta.js";
+import {Tarjeta} from "/lib/collections/tarjetas.js";
 
 Tarjeta.allow({
 	insert: function (userId, doc) {

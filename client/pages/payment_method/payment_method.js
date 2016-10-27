@@ -35,15 +35,36 @@ $('.modal-trigger').leanModal();
 
 Template.payment_method.events({
   "click #altaTarjeta": function(){
+
     var nombrePortador = $("#nameHolder").val();
     if(nombrePortador===""){
       $("#nameHolder").addClass("invalid");
       Materialize.toast("Porfavor ingresa un nombre de portador",4000);
     }
-    var numeroTarjeta;
-    var expYear;
-    var expMonth;
-    var cvc;
+
+    var numeroTarjeta = $("#cardNumber").val();
+    if(numeroTarjeta===""){
+      $("#cardNumber").addClass("invalid");
+      Materialize.toast("Porfavor ingresa el número de tarjeta",4000);
+    }
+
+    var expYear = "20" + $("#expirationYear").val();
+    if(expYear===""){
+      $("#expirationYear").addClass("invalid");
+      Materialize.toast("Porfavor ingresa el año de expiración",4000);
+    }
+
+    var expMonth = $("#expirationMonth").val();
+    if(expMonth===""){
+      $("#expirationMonth").addClass("invalid");
+      Materialize.toast("Porfavor ingresa el número de mes",4000);
+    }
+
+    var cvc = $("#cardKey").val();
+    if(cvc===""){
+      $("#cardKey").addClass("invalid");
+      Materialize.toast("Porfavor ingresa el número de clave",4000);
+    }
     tokenParams = {
       "card": {
         "number": numeroTarjeta,
@@ -53,6 +74,7 @@ Template.payment_method.events({
         "cvc": cvc
       }
     };
+    console.log(tokenParams);
     Conekta.token.create(tokenParams, successResponseHandler, errorResponseHandler);
   }
 });
