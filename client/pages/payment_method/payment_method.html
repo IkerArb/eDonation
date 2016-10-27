@@ -42,37 +42,11 @@
       <p><i>Ingresa los datos de tu nueva tarjeta para agregarla a tu cuenta</i></p>
       <!-- Modal Form -->
       <form>
-         <div class="form-group">
-            <!-- <label for="country">País</label> -->
-            <p>Tipo de Tarjeta</p>
-            <select class="form-control" id="exampleSelect1">
-              <option></option>
-              <option>Master Card</option>
-              <option>American Express</option>
-              <option>VISA</option>
-              <option>France</option>
-            </select>
-          </div>
         <div class="form-group">
           <!-- <label for="cardNumber">Número de tarjeta</label> -->
-          <p>Nombre del titular</p>
-          <input type="text" class="form-control" id="nameHolder" placeholder="Eugenio José">
+          <p>Nombre de portador</p>
+          <input type="text" class="form-control" id="nameHolder" placeholder="Eugenio José Martínez Ramos">
         </div>
-        <div class="form-group">
-          <!-- <label for="cardNumber">Número de tarjeta</label> -->
-          <p>Apellidos</p>
-          <input type="text" class="form-control" id="lastnameHolder" placeholder="Martínez Ramos">
-        </div>
-        <div class="form-group">
-          <!-- <label for="cardNumber">Número de tarjeta</label> -->
-          <p>Ciudad</p>
-          <input type="text" class="form-control" id="city" placeholder="Monterrey">
-        </div> 
-        <div class="form-group">
-          <!-- <label for="cardNumber">Número de tarjeta</label> -->
-          <p>Estado</p>
-          <input type="text" class="form-control" id="state" placeholder="Nuevo León">
-        </div> 
         <div class="form-group">
           <!-- <label for="cardNumber">Número de tarjeta</label> -->
           <p>Número de tarjeta</p>
@@ -83,7 +57,7 @@
           <p>Fecha de expiración</p>
           <!-- <input type="text" class="form-control" id="cardNumber" placeholder="01/16"> -->
               <strong style="padding-bottom:0px;">Mes</strong>
-              <select class="form-control" id="expirationMonth" style="padding-bottom:5px;"> 
+              <select class="form-control" id="expirationMonth" style="padding-bottom:5px;">
                 <option value="1">01</option>
                 <option value="2">02</option>
                 <option value="3">03</option>
@@ -111,16 +85,15 @@
 
         </div>
         <div class="form-group" style="padding-bottom:10px;">
-          <!-- <label for="cardNumber">Número de tarjeta</label> -->
-          <p>Clave</p>
+          <p>CVC</p>
           <input type="password" class="form-control" id="cardKey" placeholder="080">
         </div>
 
-      </form> 
+      </form>
 
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Ingresar tarjeta</a>
+      <a href="#!" id="altaTarjeta" class="modal-action modal-close waves-effect waves-green btn-flat ">Ingresar tarjeta</a>
     </div>
   </div>
 </template>
