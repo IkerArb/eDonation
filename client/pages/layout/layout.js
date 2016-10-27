@@ -9,6 +9,15 @@ Template.navbarFree.helpers({
   },
   'blog_link': function(){
     return FlowRouter.path("blog");
+  },
+  currentUserEmail(){
+    if(Meteor.user().services.google){
+      return Meteor.user().services.google.email;
+    }
+    if(Meteor.user().services.facebook){
+      return Meteor.user().services.facebook.email;
+    }
+    return Meteor.user().emails[0].adress;
   }
 });
 
@@ -25,6 +34,15 @@ Template.navbarAdmin.helpers({
   },
   'configuracion_link': function(){
     return FlowRouter.path("configuracion");
+  },
+  currentUserEmail(){
+    if(Meteor.user().services.google){
+      return Meteor.user().services.google.email;
+    }
+    if(Meteor.user().services.facebook){
+      return Meteor.user().services.facebook.email;
+    }
+    return Meteor.user().emails[0].adress;
   }
 });
 
