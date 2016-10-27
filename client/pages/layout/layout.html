@@ -4,6 +4,7 @@
 		Smart City
 	</title>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <template name="layout">
   <div>
@@ -40,7 +41,8 @@
       </div>-->
 			<nav>
 			    <div id="nav-title" class="nav-wrapper">
-			      <a href="#!" class="brand-logo">eDonation</a>
+						<img src="images/logo.png" height="80" width="100">
+			      <a href="#!" class="brand-logo" style="padding-left:10px;">eDonation</a>
 			      <a href="#" data-activates="mobile-demo" class="button-collapse">
 							<button type="button" class="navbar-toggle menu-btn">
 	      				<span class="sr-only">
@@ -180,13 +182,6 @@
     </li>
   </ul>
   <ul id="menu-items" class="nav navbar-nav navbar-right">
-    <li id="menu-item-simple" >
-      <a href={{blog_link}}>
-        <span class="item-title">
-          Blog
-        </span>
-      </a>
-    </li>
     {{#if currentUser}}
 			<li id="menu-item-simple" >
 				<a href="#" id="logout">
