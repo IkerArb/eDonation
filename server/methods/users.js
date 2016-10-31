@@ -53,7 +53,7 @@ Meteor.methods({
     var clientCreate = Meteor.wrapAsync(conekta.Customer.create,conekta.Customer);
     clientCreate({
       "name": user.profile.name,
-      "email": user.profile.email,
+      "email": "ikerarbulu@gmail.com",
       "phone": "",
       "cards": [tokenId]
     }, function(err, res) {

@@ -3,7 +3,8 @@ import {Tarjeta} from '/lib/collections/tarjetas.js';
 
 Meteor.methods({
   'altaTarjeta':function(doc){
-    check(doc,Schemas.Tarjeta);
+    console.log(doc);
+    // check(doc,Schemas.Tarjeta);
     return Tarjeta.insert(doc);
   },
   'bajaTarjeta':function(id){

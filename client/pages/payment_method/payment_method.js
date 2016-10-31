@@ -11,7 +11,7 @@ successResponseHandler = function(token) {
     console.log(Conekta.card.getBrand(tokenParams.card.number));
     Meteor.call("saveClientConekta",tokenId.id,function(err,result){
       if(err){
-        console.log(error.reason);
+        console.log(err.reason);
       }else{
         console.log(result);
         var docTarjeta = {
@@ -36,6 +36,24 @@ errorResponseHandler = function(error) {
 Template.payment_method.rendered = function(){
   $('.modal-trigger').leanModal();
 };
+
+Template.payment_method.helpers({
+  tarjetas(){
+    return Tarjeta.find();
+  },
+  brand(){
+    var tarjeta = this;
+		if(tarjeta.brand=='amex'){
+			return 'fa-cc-amex';
+		}
+		if(tarjeta.brand=='visa'){
+			return 'fa-cc-visa';
+		}
+		if(tarjeta.brand=='mastercard'){
+			return 'fa-cc-mastercard';
+		}
+  }
+});
 
 Template.payment_method.events({
   "click #altaTarjeta": function(){
