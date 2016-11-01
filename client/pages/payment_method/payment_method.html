@@ -9,14 +9,15 @@
       </div>
     </div>
     <h2>Elegir método de pago</h2>
+    {{#each tarjetas}}
     <div class="row pay-card">
       <div class="col s6 offset-s3 no-margin-top z-depth-1">
           <div class="row pay-card-details">
             <div class="col s4">
-              <i class="fa fa-credit-card fa-2x" aria-hidden="true"></i>
+              <i class="fa {{brand}} fa-2x" aria-hidden="true"></i>
             </div>
             <div class="col s4">
-              <p>****-1234</p>
+              <p>****-{{this.last_digits}}</p>
             </div>
             <div class="col s4">
               <button class="pay-card-button"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
@@ -24,6 +25,7 @@
           </div>
       </div>
     </div>
+    {{/each}}
     <div class="row pay-card">
       <div class="col s6 offset-s3 no-margin-top z-depth-1">
           <button class="pay-card-button modal-trigger" href="#modal1"><div class="row pay-card-details">

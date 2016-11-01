@@ -1,3 +1,6 @@
+import {Tarjeta} from '/lib/collections/tarjetas.js';
+
+
 var errorResponseHandler, successResponseHandler, tokenParams;
 Conekta.setPublishableKey("key_FeHir2FBvSD4hTs29A7zJRA");
 successResponseHandler = function(token) {
@@ -8,16 +11,17 @@ successResponseHandler = function(token) {
     console.log(Conekta.card.getBrand(tokenParams.card.number));
     Meteor.call("saveClientConekta",tokenId.id,function(err,result){
       if(err){
-        console.log(error.reason);
+        console.log(err.reason);
       }else{
         console.log(result);
-        Tarjetas.insert({
+        var docTarjeta = {
           token:result._id,
-          lastDigits:tokenParams.card.number.slice(-4),
-          tarjetaBrand:Conekta.card.getBrand(tokenParams.card.number),
-          cardToken:token,
-          clientToken:result
-        });
+          last_digits:tokenParams.card.number.slice(-4),
+          brand:Conekta.card.getBrand(tokenParams.card.number),
+          card_token:token,
+          client_token:result
+        };
+        Meteor.call("altaTarjeta",docTarjeta);
       }
 
     });
@@ -30,8 +34,26 @@ errorResponseHandler = function(error) {
 };
 
 Template.payment_method.rendered = function(){
-$('.modal-trigger').leanModal();
+  $('.modal-trigger').leanModal();
 };
+
+Template.payment_method.helpers({
+  tarjetas(){
+    return Tarjeta.find();
+  },
+  brand(){
+    var tarjeta = this;
+		if(tarjeta.brand=='amex'){
+			return 'fa-cc-amex';
+		}
+		if(tarjeta.brand=='visa'){
+			return 'fa-cc-visa';
+		}
+		if(tarjeta.brand=='mastercard'){
+			return 'fa-cc-mastercard';
+		}
+  }
+});
 
 Template.payment_method.events({
   "click #altaTarjeta": function(){
