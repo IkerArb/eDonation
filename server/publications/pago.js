@@ -1,7 +1,6 @@
 import {Meteor} from "meteor/meteor";
-import {Pago} from "/lib/collections/pago.js";
+import {Pago} from "/lib/collections/pagos.js";
 
 Meteor.publish("userPagos", function() {
-  return Pago.find({createdBy:this.userId},
-    {amount:true, issuedAt:true, tarjetaId:true});
-}
+  return Pago.find({createdBy:this.userId});
+});

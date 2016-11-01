@@ -1,4 +1,4 @@
-import {Pago} from "/lib/collections/tarjeta.js";
+import {Pago} from "/lib/collections/pagos.js";
 
 Pago.allow({
 	insert: function (userId, doc) {
