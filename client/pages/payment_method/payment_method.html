@@ -25,13 +25,102 @@
       </div>
     </div>
     <div class="row pay-card">
-      <button class="col s6 offset-s3 no-margin-top z-depth-1 pay-card-add">
-          <div class="row pay-card-details">
+      <div class="col s6 offset-s3 no-margin-top z-depth-1">
+          <button class="pay-card-button modal-trigger" href="#modal1"><div class="row pay-card-details">
             <div class="col s4 offset-s4">
               <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
             </div>
+          </div></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content modal-body">
+      <h3 style="color:#ee6e73">Nueva Tarjeta</h3>
+      <p><i>Ingresa los datos de tu nueva tarjeta para agregarla a tu cuenta</i></p>
+      <!-- Modal Form -->
+      <form>
+         <div class="form-group">
+            <!-- <label for="country">País</label> -->
+            <p>Tipo de Tarjeta</p>
+            <select class="form-control" id="exampleSelect1">
+              <option></option>
+              <option>Master Card</option>
+              <option>American Express</option>
+              <option>VISA</option>
+              <option>France</option>
+            </select>
           </div>
-      </button>
+        <div class="form-group">
+          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+          <p>Nombre del titular</p>
+          <input type="text" class="form-control" id="nameHolder" placeholder="Eugenio José">
+        </div>
+        <div class="form-group">
+          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+          <p>Apellidos</p>
+          <input type="text" class="form-control" id="lastnameHolder" placeholder="Martínez Ramos">
+        </div>
+        <div class="form-group">
+          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+          <p>Ciudad</p>
+          <input type="text" class="form-control" id="city" placeholder="Monterrey">
+        </div> 
+        <div class="form-group">
+          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+          <p>Estado</p>
+          <input type="text" class="form-control" id="state" placeholder="Nuevo León">
+        </div> 
+        <div class="form-group">
+          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+          <p>Número de tarjeta</p>
+          <input type="text" class="form-control" id="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX">
+        </div>
+        <div class="form-group">
+          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+          <p>Fecha de expiración</p>
+          <!-- <input type="text" class="form-control" id="cardNumber" placeholder="01/16"> -->
+              <strong style="padding-bottom:0px;">Mes</strong>
+              <select class="form-control" id="expirationMonth" style="padding-bottom:5px;"> 
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7">07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+               <strong style="padding-bottom:0px; padding-top:10px;">Año</strong>
+                <select class="form-control" id="expirationYear">
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                </select>
+
+        </div>
+        <div class="form-group" style="padding-bottom:10px;">
+          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+          <p>Clave</p>
+          <input type="password" class="form-control" id="cardKey" placeholder="080">
+        </div>
+
+      </form> 
+
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Ingresar tarjeta</a>
     </div>
   </div>
 </template>
