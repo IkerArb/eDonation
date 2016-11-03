@@ -1,14 +1,30 @@
 <template name="donation_unique">
-  <div class="container">
+  <div class="container center-align">
     <h2>Donación única</h2>
     <div class="row">
-      <div class="col s3">
+      <div class="col s3" style="cursor:pointer" id="donate50">
         <div class="card-shop-collection">
           <div class="card-shop-item">
-            <div class="card-shop-item-content">
+            <div class="card-shop-item-content hoverable">
               <div class="title-container">
-                <p class="card-title">$50</p>
-                <p class="card-subtitle">Donar</p>
+                <h2 class="center-align">$50</h2>
+              </div>
+              <div class="card-img">
+                <img src="/images/1.jpg" alt="primera">
+              </div>
+              <div class="card-btn">
+                <h4> DONAR </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s3" style="cursor:pointer" id="donate100">
+        <div class="card-shop-collection">
+          <div class="card-shop-item">
+            <div class="card-shop-item-content hoverable">
+              <div class="title-container">
+                 <h2 class="center-align">$100</h2>
               </div>
               <div class="card-img">
                 <img src="/images/1.jpg" alt="primera">
@@ -21,12 +37,11 @@
         </div>
       </div>
       <div class="col s3">
-        <div class="card-shop-collection">
+        <div class="card-shop-collection" style="cursor:pointer" id="donate200">
           <div class="card-shop-item">
-            <div class="card-shop-item-content">
+            <div class="card-shop-item-content hoverable">
               <div class="title-container">
-                <p class="card-title">$100</p>
-                <p class="card-subtitle">Donar</p>
+                 <h2 class="center-align">$200</h2>
               </div>
               <div class="card-img">
                 <img src="/images/1.jpg" alt="primera">
@@ -39,23 +54,32 @@
         </div>
       </div>
       <div class="col s3">
-        <div class="card-shop-collection">
+        <div class="card-shop-collection" style="cursor:pointer" id="specificDonation">
           <div class="card-shop-item">
-            <div class="card-shop-item-content">
+            <div class="card-shop-item-content hoverable">
               <div class="title-container">
-                <p class="card-title">$200</p>
-                <p class="card-subtitle">Donar</p>
+                 <h2 class="center-align">Otro</h2>
               </div>
               <div class="card-img">
                 <img src="/images/1.jpg" alt="primera">
               </div>
               <div class="card-btn clearfix">
-                <h4>DONAR</h4>
+                <h4>Escribir otra cantidad</h4>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  {{#if isSpecifiedDonation}}
+    <div class="center-align container" id="specifyDonation" >
+      <p>Ingresa la cantidad que quieres donar</p>
+      <div class="row">
+        <div class="col s4 offset-s4"> 
+           <input style="font-size:25px" type="text" class="form-control center-align" placeholder="0.00">
+        </div>
+      </div>
+    </div>
+  {{/if}}
   </div>
 </template>
