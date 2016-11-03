@@ -2,32 +2,32 @@
   <div class="container center-align">
     <div class="row">
       <div class="col s6">
-        <h3>Tipo de donación: "unica/recurrente"</h3>
+        <h3>Tipo de donación: {{tipoDonacion}}</h3>
       </div>
       <div class="col s6">
-        <h3>Cantidad a donar: $500</h3>
+        <h3>Cantidad a donar: {{cantidadADonar}}</h3>
       </div>
     </div>
     <h2>Elegir método de pago</h2>
     {{#each tarjetas}}
     <div class="row pay-card">
-      <div class="col s6 offset-s3 no-margin-top z-depth-1">
-          <div class="row pay-card-details">
+      <div class="col s12 no-margin-top z-depth-1">
+          <div class="row pay-card-details {{isSelected}} elige-tarjeta">
             <div class="col s4">
               <i class="fa {{brand}} fa-2x" aria-hidden="true"></i>
             </div>
             <div class="col s4">
-              <p>****-{{this.last_digits}}</p>
+              <p>****{{this.last_digits}}</p>
             </div>
             <div class="col s4">
-              <button class="pay-card-button"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
+              <button class="pay-card-button delete-card" id={{this._id}}><i id={{this._id}} class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
             </div>
           </div>
       </div>
     </div>
     {{/each}}
     <div class="row pay-card">
-      <div class="col s6 offset-s3 no-margin-top z-depth-1">
+      <div class="col s12 no-margin-top z-depth-1">
           <button class="pay-card-button modal-trigger" href="#modal1"><div class="row pay-card-details">
             <div class="col s4 offset-s4">
               <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
@@ -35,6 +35,19 @@
           </div></button>
       </div>
     </div>
+    {{#if selectedCard}}
+      <div class="row pay-card">
+        <div class="col s12 no-margin-top z-depth-1 teal">
+            <button class="pay-card-button modal-trigger" href="#modalConfirma">
+              <div class="row pay-card-details">
+                <div class="col s4 offset-s4">
+                  <h2>Pagar</h2>
+                </div>
+              </div>
+            </button>
+        </div>
+      </div>
+    {{/if}}
   </div>
 
   <!-- Modal Structure -->
@@ -96,6 +109,18 @@
     </div>
     <div class="modal-footer">
       <a href="#!" id="altaTarjeta" class="modal-action modal-close waves-effect waves-green btn-flat ">Ingresar tarjeta</a>
+    </div>
+  </div>
+
+  <div id="modalConfirma" class="modal modal-fixed-footer">
+    <div class="modal-content modal-body">
+      <h3 style="color:#ee6e73">Confirma los Siguientes Datos</h3>
+      <h4>Pago: {{cantidadADonar}}</h4>
+      <h4>Tipo de Donación: {{tipoDonacion}}</h4>
+      <h4>Tarjeta Seleccionada: <i class="fa {{brandSeleccionada}} fa-2x" aria-hidden="true"></i> ****{{lastDigitsSeleccionada}} </h4>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" id="confirmaPago" class="modal-action modal-close waves-effect waves-green btn-flat ">Confirmar</a>
     </div>
   </div>
 </template>
