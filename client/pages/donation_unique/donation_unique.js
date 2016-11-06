@@ -18,9 +18,11 @@ Template.donation_unique.events({
 	},
 	"click #donate100": function(e){
 		Session.set("specifyDonation", false);
+		Session.set("donateAmount", 100);
 	},
 	"click #donate200": function(e){
 		Session.set("specifyDonation", false);
+		Session.set("donateAmount", 200);
 	}
 });
 
