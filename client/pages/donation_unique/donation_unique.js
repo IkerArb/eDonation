@@ -47,6 +47,3 @@ Template.donation_unique.events({
 		Session.set("donateAmount", Amount);
 	}
 });
-
-
-

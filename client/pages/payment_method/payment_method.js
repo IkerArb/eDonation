@@ -1,7 +1,3 @@
-Template.payment_method.rendered = function(){
-$('.modal-trigger').leanModal();
-};
-
 import {Tarjeta} from '/lib/collections/tarjetas.js';
 
 
@@ -39,9 +35,35 @@ errorResponseHandler = function(error) {
 
 Template.payment_method.rendered = function(){
   $('.modal-trigger').leanModal();
+  Session.set("cantidadADonar",500);
+  Session.set("tipoDonacion","Unica");
 };
 
 Template.payment_method.helpers({
+  selectedCard(){
+    return Session.get("selectedTarjeta");
+  },
+  lastDigitsSeleccionada(){
+    return Session.get("selectedTarjeta").last_digits;
+  },
+  brandSeleccionada(){
+    var tarjeta = Session.get("selectedTarjeta");
+		if(tarjeta.brand=='amex'){
+			return 'fa-cc-amex';
+		}
+		if(tarjeta.brand=='visa'){
+			return 'fa-cc-visa';
+		}
+		if(tarjeta.brand=='mastercard'){
+			return 'fa-cc-mastercard';
+		}
+  },
+  cantidadADonar(){
+    return Session.get("cantidadADonar");
+  },
+  tipoDonacion(){
+    return Session.get("tipoDonacion");
+  },
   tarjetas(){
     return Tarjeta.find();
   },
@@ -56,6 +78,11 @@ Template.payment_method.helpers({
 		if(tarjeta.brand=='mastercard'){
 			return 'fa-cc-mastercard';
 		}
+  },
+  isSelected(){
+    if(Session.get('selectedTarjeta')._id==this._id){
+      return 'selected';
+    }
   }
 });
 
@@ -102,5 +129,39 @@ Template.payment_method.events({
     };
     console.log(tokenParams);
     Conekta.token.create(tokenParams, successResponseHandler, errorResponseHandler);
+  },
+  "click .delete-card":function(e){
+    console.log(e.target);
+    var borraSession = Session.get('selectedTarjeta')._id == e.target.id;
+    var tarjetaId = e.target.id;
+    console.log(tarjetaId);
+    Meteor.call("bajaTarjeta",tarjetaId,function(error,success){
+      if(error){
+        Materialize.toast(error.reason,4000);
+      }
+      else{
+        Materialize.toast("Baja exitosa de tarjeta",4000);
+        if(borraSession){
+          Session.set('selectedTarjeta','');
+        }
+      }
+    });
+  },
+  "click .elige-tarjeta":function(e){
+    Session.set('selectedTarjeta',this);
+  },
+  "click #confirmaPago":function(e){
+    console.log("entro");
+    if(Session.get("tipoDonacion")==="Unica"){
+      Meteor.call('createDonacion',Session.get("cantidadADonar"),Session.get("selectedTarjeta")._id,
+      function(error,success){
+        if(error){
+          Materialize.toast(error.reason);
+        }
+        else{
+          Materialize.toast("Donación Única Exitosa",4000);
+        }
+      });
+    }
   }
 });

@@ -1,3 +1,13 @@
+/* npm conekta */
+conekta = Npm.require("conekta");
+conekta.api_key = 'key_BNTckvHREyFsgU6zrzvEEg'; //key de conekta
+conekta.locale = 'es';
+/* npm conekta */
+
+/* Future */
+Future = Npm.require('fibers/future');
+/* Future */
+
 import {Users} from "meteor-user-roles";
 
 S3.config = {

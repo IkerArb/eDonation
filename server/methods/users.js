@@ -46,5 +46,27 @@ Meteor.methods({
     }
     //Hacemos un update de todos los demás campos mandados en la forma
     Meteor.users.update({_id:docId},doc,{filter: false, validate: false});
+  },
+  'saveClientConekta':function(tokenId){
+    var user = Meteor.users.findOne({_id:this.userId});
+    var fut = new Future();
+    var clientCreate = Meteor.wrapAsync(conekta.Customer.create,conekta.Customer);
+    clientCreate({
+      "name": user.profile.name,
+      "email": "ikerarbulu@gmail.com",
+      "phone": "",
+      "cards": [tokenId]
+    }, function(err, res) {
+        if(err){
+          fut.return({msg:err,succes:0});
+        }else{
+          fut.return({succes:1,conekta:res});
+        }
+    });
+    var result = fut.wait();
+    if(result.succes===0){
+      throw new Meteor.Error('falta-dir', result.msg.message_to_purchaser);
+    }
+    return result.conekta;
   }
 });
