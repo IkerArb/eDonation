@@ -151,6 +151,7 @@ Template.payment_method.events({
     Session.set('selectedTarjeta',this);
   },
   "click #confirmaPago":function(e){
+    console.log("entro");
     if(Session.get("tipoDonacion")==="Unica"){
       Meteor.call('createDonacion',Session.get("cantidadADonar"),Session.get("selectedTarjeta")._id,
       function(error,success){

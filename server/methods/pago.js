@@ -2,12 +2,34 @@ import {Meteor} from "meteor/meteor";
 import {Pago} from "/lib/collections/pagos.js";
 import {Tarjeta} from "/lib/collections/tarjetas.js";
 
+function getUserName(userObject){
+  if(userObject.services.google){
+    return userObject.services.google.name;
+  }
+  if(userObject.services.facebook){
+    return userObject.services.facebook.name;
+  }
+  return userObject.profile.name;
+}
+
+function getUserEmail(userObject){
+  if(userObject.services.google){
+    return userObject.services.google.email;
+  }
+  if(userObject.services.facebook){
+    return userObject.services.facebook.email;
+  }
+  return userObject.emails[0].address;
+}
+
 Meteor.methods({
   'createDonacion':function(total,tarjetaId){
     var user = Meteor.users.findOne({_id:this.userId});
+    userName = getUserName(user);
+    userEmail = getUserEmail(user);
     userId = this.userId;
     var tarjeta = Tarjeta.findOne(tarjetaId);
-    var description= "Donacion de "+user.profile.name+" a las "+Date.now();
+    var description= "Donacion de "+userName+" a las "+Date.now();
     self = this;
     var fut = new Future();
     var chargeCreate = Meteor.wrapAsync(conekta.Charge.create,conekta.Charge);
@@ -19,9 +41,9 @@ Meteor.methods({
       "reference_id":"9839-wolf_pack",
       "card": tarjeta.token,
       "details": {
-        "name": "user.profile.name",
+        "name": userName,
         "phone": "8888888888",
-        "email": "user.profile.email",
+        "email": userEmail,
         "customer": {
           "logged_in": true,
           "successful_purchases": 14,
