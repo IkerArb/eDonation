@@ -5,36 +5,6 @@
 @blue: #507aac;
 @black: #333333;
 
-//TAB EXPERIMENT- GINO
-
-    ul.tabs{
-      margin: 0px;
-      padding: 0px;
-      list-style: none;
-    }
-    ul.tabs li{
-      background: none;
-      color: #222;
-      display: inline-block;
-      padding: 10px 15px;
-      cursor: pointer;
-    }
-
-    ul.tabs li.current{
-      background: #ededed;
-      color: #222;
-    }
-
-    .tab-content{
-      display: none;
-      background: #ededed;
-      padding: 15px;
-    }
-
-    .tab-content.current{
-      display: inherit;
-    }
-
 
 // **** LAYOUT ****
 
@@ -109,11 +79,6 @@ p {
 	width: auto;
 	height: 1em;
 	margin-right: 20px;
-}
-.center-vertical{
-  position:absolute;
-  top:50%;
-  transform: translateY(-50%);
 }
 
 .jumbotron {
@@ -753,25 +718,19 @@ height: 50vh;
 }
 
 .pay-card {
-  background-color: transparent;;
+  background-color: #fff;
   opacity: 0.8;
   margin-top: 5px;
 
   .pay-card-details {
-    background-color: transparent;;
+    background-color: #fff;
     padding: 40px;
     margin-bottom: 0;
-    cursor: pointer;
-  }
-
-  .pay-card-details.selected{
-    background-color: blue;
-    color: white;
   }
 
   .pay-card-button {
     border: none;
-    background-color: transparent;
+    background-color: #fff;
   }
 
   .pay-card-add {
@@ -785,9 +744,9 @@ height: 50vh;
 .card-shop-collection {
   float: right;
 
- // @media screen and (min-width: 930px) {
-   // width: calc(70% - 15px);
-  //}
+ @media screen and (min-width: 930px) {
+   width: calc(70% - 15px);
+  }
   .card-shop-item {
     float: left;
     padding-right: 15px;
@@ -910,7 +869,26 @@ height: 50vh;
 }
 
 .back-back {
-      background: image-url("public/images/background1.png") fixed center top no-repeat;
-      min-height: 510px;
-      background-color: #8FC057;
-    }
+  background-image: url("images/background1.png");
+  min-height: 918px;
+  background-color: #8FC057;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: block;
+  top: 0;
+
+  //mobile
+  @media screen and (max-width: 600px) {
+    min-height: 700px;
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 930px) {
+    min-height: 1024px;
+  }
+
+}
