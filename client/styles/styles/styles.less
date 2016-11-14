@@ -5,6 +5,7 @@
 @blue: #507aac;
 @black: #333333;
 
+
 .typo{
   font-size:20px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -84,11 +85,6 @@ p {
 	width: auto;
 	height: 1em;
 	margin-right: 20px;
-}
-.center-vertical{
-  position:absolute;
-  top:50%;
-  transform: translateY(-50%);
 }
 
 .jumbotron {
@@ -728,25 +724,19 @@ height: 50vh;
 }
 
 .pay-card {
-  background-color: transparent;;
+  background-color: #fff;
   opacity: 0.8;
   margin-top: 5px;
 
   .pay-card-details {
-    background-color: transparent;;
+    background-color: #fff;
     padding: 40px;
     margin-bottom: 0;
-    cursor: pointer;
-  }
-
-  .pay-card-details.selected{
-    background-color: blue;
-    color: white;
   }
 
   .pay-card-button {
     border: none;
-    background-color: transparent;
+    background-color: #fff;
   }
 
   .pay-card-add {
@@ -760,9 +750,9 @@ height: 50vh;
 .card-shop-collection {
   float: right;
 
- // @media screen and (min-width: 930px) {
-   // width: calc(70% - 15px);
-  //}
+ @media screen and (min-width: 930px) {
+   width: calc(70% - 15px);
+  }
   .card-shop-item {
     float: left;
     padding-right: 15px;
@@ -885,7 +875,129 @@ height: 50vh;
 }
 
 .back-back {
-      background: image-url("public/images/background1.png") fixed center top no-repeat;
-      min-height: 510px;
-      background-color: #8FC057;
+  background-image: url("images/background1.png");
+  min-height: 918px;
+  background-color: #8FC057;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: block;
+  top: 0;
+
+  //mobile
+  @media screen and (max-width: 600px) {
+    min-height: 700px;
+  }
+
+  @media screen and (min-width: 600px) and (max-width: 930px) {
+    min-height: 1024px;
+  }
+
+}
+
+.ticket {
+  // margin: auto;
+  max-width: 400px;
+  position: relative;
+  background-color: #FFF;
+  border-radius: 2px;
+  border: 1px solid lightgrey;
+  margin-top: 20px;
+
+  &.affix {
+    position: static;
+    width: 100%;
+  }
+
+  .ticket-highlight {
+    max-width: 600px;
+    background-color: #55298F;
+    font-size: 50px;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    padding: 15px;
+    margin-bottom: 0;
+  }
+}
+
+.ticket-content {
+  padding: 20px;
+  border-radius: 0 0 2px 2px;
+
+  .ticket-title {
+    text-align: center;
+
+  }
+
+  .ticket-subtitle {
+    text-align: center;
+    font-size: 14px;
+    margin: 0;
+    p{
+      font-size: 14px;
     }
+  }
+
+  .ticket-note{
+    color: grey;
+    font-weight: normal;
+  }
+
+  .ticket-details {
+    text-align: left !important;
+    margin:auto;
+
+    dt {
+      text-align: left;
+      width: 250px;
+    }
+    dd {
+      text-align: right;
+    }
+  }
+
+  table {
+    // width: 550px;
+    margin-left: 10px;
+    table-layout: fixed;
+    font-size: 14px;
+
+    th {
+      font-size: 16px;
+
+    }
+
+    td {
+      border-bottom: none;
+      h2 {
+      text-align: right;
+      font-weight: 500;
+    }
+    }
+  }
+
+  p {
+      margin-bottom: 10px;
+      margin-top: 10px;
+      font-size: 18px;
+      color: grey;
+
+      .total {
+        font-weight: bold;
+      }
+  }
+
+  .bottom {
+    border-top: 1px solid #a6a6a6;
+  }
+}
+
+.ticket-action {
+  border-top: 1px solid rgba(160, 160, 160, 0.2);
+  padding: 20px;
+}
