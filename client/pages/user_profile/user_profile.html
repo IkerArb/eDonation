@@ -1,0 +1,250 @@
+<template name="user_profile">
+	<div class="container center-align">
+	 <div class="row">
+	    <div class="col s12">
+	      <ul class="tabs">
+	        <li class="tab col s4"><a class="active" href="#profile">Perfil</a></li>
+	        <li class="tab col s4"><a href="#cards">Tarjetas</a></li>
+	        <li class="tab col s4"><a href="#payments">Pagos</a></li>
+	      </ul>
+	    </div>
+
+	    <div id="profile" class="col s12">
+	    	<br>
+	    	<div class="row">
+	    		<div class="col s4">
+	    			<p class="typo"> Nombre:</p> <p class="flow-text"> {{userName}} </p>
+	    		</div>
+	    		<div class="col s4">
+	    			<p class="typo"> Correo:</p> <p class="flow-text"> {{email}} </p>
+	    		</div>
+	    		<div class="col s4">
+	    		</div>
+	    	</div>
+	    </div>
+
+	    <div id="cards" class="col s12">
+	    	<br>
+	    	<!-- DESPLEGAR TARJETAS -->
+	    	{{#each tarjetas}}
+			    <div class="row pay-card">
+			      <div class="col s12 no-margin-top z-depth-1">
+			          <div class="row pay-card-details {{isSelected}} elige-tarjeta">
+			            <div class="col s4">
+			              <i class="fa {{brand}} fa-2x" aria-hidden="true"></i>
+			            </div>
+			            <div class="col s4">
+			              <p>****{{this.last_digits}}</p>
+			            </div>
+			            <div class="col s4">
+			              <button class="pay-card-button delete-card" id={{this._id}}><i id={{this._id}} class="fa fa-trash fa-2x" aria-hidden="true"></i></button>
+			            </div>
+			          </div>
+			      </div>
+			    </div>
+			 {{/each}}
+			 <div class="row pay-card">
+		      <div class="col s12 no-margin-top z-depth-1">
+		          <button class="pay-card-button modal-trigger" href="#modal1"><div class="row pay-card-details">
+		            <div class="col s4 offset-s4">
+		              <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+		            </div>
+		          </div></button>
+		      </div>
+		    </div>
+		    <!-- FIN DE DESPLEGAR TARJETAS -->
+
+		    <!-- MODAL PARA AGREGAR TARJETAS -->
+			  <div id="modal1" class="modal modal-fixed-footer container">
+			    <div class="modal-content modal-body">
+			      <h3 style="color:#ee6e73">Nueva Tarjeta</h3>
+			      <p><i>Ingresa los datos de tu nueva tarjeta para agregarla a tu cuenta</i></p>
+			      <!-- Modal Form -->
+			      <form>
+			        <div class="form-group">
+			          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+			          <p>Nombre de portador</p>
+			          <input type="text" class="form-control" id="nameHolder" placeholder="Eugenio José Martínez Ramos">
+			        </div>
+			        <div class="form-group">
+			          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+			          <p>Número de tarjeta</p>
+			          <input type="text" class="form-control" id="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX">
+			        </div>
+			        <div class="form-group">
+			          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+			          <p>Fecha de expiración</p>
+			          <!-- <input type="text" class="form-control" id="cardNumber" placeholder="01/16"> -->
+			              <strong style="padding-bottom:0px;">Mes</strong>
+			              <select class="form-control" id="expirationMonth" style="padding-bottom:5px;">
+			                <option value="01">01</option>
+			                <option value="02">02</option>
+			                <option value="03">03</option>
+			                <option value="04">04</option>
+			                <option value="05">05</option>
+			                <option value="06">06</option>
+			                <option value="07">07</option>
+			                <option value="08">08</option>
+			                <option value="09">09</option>
+			                <option value="10">10</option>
+			                <option value="11">11</option>
+			                <option value="12">12</option>
+			              </select>
+			               <strong style="padding-bottom:0px; padding-top:10px;">Año</strong>
+			                <select class="form-control" id="expirationYear">
+			                  <option value="16">16</option>
+			                  <option value="17">17</option>
+			                  <option value="18">18</option>
+			                  <option value="19">19</option>
+			                  <option value="20">20</option>
+			                  <option value="21">21</option>
+			                  <option value="22">22</option>
+			                  <option value="23">23</option>
+			                </select>
+
+			        </div>
+			        <div class="form-group" style="padding-bottom:10px;">
+			          <p>CVC</p>
+			          <input type="password" class="form-control" id="cardKey" placeholder="080">
+			        </div>
+
+			      </form>
+
+			    </div>
+			    <div class="modal-footer">
+			      <a href="#!" id="altaTarjeta" class="modal-action modal-close waves-effect waves-green btn-flat ">Ingresar tarjeta</a>
+			    </div>
+			  </div>
+			  <!-- FIN DE MODAL PARA AGREGAR TARJETA -->
+
+	    </div>
+	    <div id="payments" class="col s12">Test 3</div>
+
+	    <div id="test1" class="col s12">
+				<div class="col s4">
+					<div class="ticket">
+					  <h2 class="ticket-highlight">No. 4682167</h2>
+						<div class="ticket-content">
+				    <!-- <p class="ticket-title">Ticket #001</p> -->
+					    <div class="table-responsive">
+						    <h2 class="ticket-title">¡Gracias por tu donación!</h2>
+					    <!-- <h2 class="ticket-subtitle"> Recogeremos tu ropa en el lugar y hora indicados. Esta confirmación se enviará automáticamente al correo electrónico registrado. Aquí un resumen de tu pedido:</h2> -->
+					      <table>
+						      <thead>
+						        <tr>
+						          <th>Tarjeta</th>
+						          <th>Cantidad</th>
+						          <th>Donación</th>
+											<th>Fecha</th>
+						        </tr>
+						      </thead>
+					        <tbody>
+					          <tr>
+					            <td>****123</td>
+					            <td>$500</td>
+					            <td>Única</td>
+											<td>11/10/2016</td>
+					          </tr>
+					          <tr class="bottom">
+					            <td></td>
+					            <td></td>
+					            <td></td>
+											<td></td>
+					          </tr>
+					        </tbody>
+					      </table>
+					    </div>
+				    <!-- <h2 class="ticket-subtitle">Nota:</h2> -->
+					    <div class="ticket-subtitle">
+					      <p>*Para dudas o aclaraciones envía un correo a aclaraciones@unidos.com</p>
+				      </div>
+						</div>
+				  </div>
+				</div>
+				<div class="col s4">
+					<div class="ticket">
+					  <h2 class="ticket-highlight">No. 4682167</h2>
+						<div class="ticket-content">
+				    <!-- <p class="ticket-title">Ticket #001</p> -->
+					    <div class="table-responsive">
+						    <h2 class="ticket-title">¡Gracias por tu donación!</h2>
+					    <!-- <h2 class="ticket-subtitle"> Recogeremos tu ropa en el lugar y hora indicados. Esta confirmación se enviará automáticamente al correo electrónico registrado. Aquí un resumen de tu pedido:</h2> -->
+					      <table>
+						      <thead>
+						        <tr>
+						          <th>Tarjeta</th>
+						          <th>Cantidad</th>
+						          <th>Donación</th>
+											<th>Fecha</th>
+						        </tr>
+						      </thead>
+					        <tbody>
+					          <tr>
+					            <td>****123</td>
+					            <td>$500</td>
+					            <td>Única</td>
+											<td>11/10/2016</td>
+					          </tr>
+					          <tr class="bottom">
+					            <td></td>
+					            <td></td>
+					            <td></td>
+											<td></td>
+					          </tr>
+					        </tbody>
+					      </table>
+					    </div>
+				    <!-- <h2 class="ticket-subtitle">Nota:</h2> -->
+					    <div class="ticket-subtitle">
+					      <p>*Para dudas o aclaraciones envía un correo a aclaraciones@unidos.com</p>
+				      </div>
+						</div>
+				  </div>
+				</div>
+				<div class="col s4">
+					<div class="ticket">
+					  <h2 class="ticket-highlight">No. 4682167</h2>
+						<div class="ticket-content">
+				    <!-- <p class="ticket-title">Ticket #001</p> -->
+					    <div class="table-responsive">
+						    <h2 class="ticket-title">¡Gracias por tu donación!</h2>
+					    <!-- <h2 class="ticket-subtitle"> Recogeremos tu ropa en el lugar y hora indicados. Esta confirmación se enviará automáticamente al correo electrónico registrado. Aquí un resumen de tu pedido:</h2> -->
+					      <table>
+						      <thead>
+						        <tr>
+						          <th>Tarjeta</th>
+						          <th>Cantidad</th>
+						          <th>Donación</th>
+											<th>Fecha</th>
+						        </tr>
+						      </thead>
+					        <tbody>
+					          <tr>
+					            <td>****123</td>
+					            <td>$500</td>
+					            <td>Única</td>
+											<td>11/10/2016</td>
+					          </tr>
+					          <tr class="bottom">
+					            <td></td>
+					            <td></td>
+					            <td></td>
+											<td></td>
+					          </tr>
+					        </tbody>
+					      </table>
+					    </div>
+				    <!-- <h2 class="ticket-subtitle">Nota:</h2> -->
+					    <div class="ticket-subtitle">
+					      <p>*Para dudas o aclaraciones envía un correo a aclaraciones@unidos.com</p>
+				      </div>
+						</div>
+				  </div>
+				</div>
+
+	    </div>
+	    <div id="test4" class="col s12">Test 4</div>
+
+	  </div>
+	</div><!-- container -->
+</template>

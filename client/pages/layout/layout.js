@@ -4,6 +4,16 @@ Template.navbarFree.onRendered(function(){
 });
 
 Template.navbarFree.helpers({
+  'isAdmin': function(){
+    console.log(Meteor.user().roles);
+    return Meteor.user().roles.indexOf('admin')>=0;
+  },
+  'home_admin_link': function(){
+    return FlowRouter.path("home_admin");
+  },
+  'configuracion_link': function(){
+    return FlowRouter.path("configuracion");
+  },
   'home_link': function(){
     return FlowRouter.path("home_free");
   },

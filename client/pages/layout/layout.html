@@ -1,7 +1,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>
-		Smart City
+		Unidos:) eDonation
 	</title>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -141,13 +141,6 @@
     </li>
   </ul>
   <ul id="menu-items" class="nav navbar-nav navbar-right">
-    <li id="menu-item-simple" >
-      <a href={{cat_blog_link}}>
-        <span class="item-title">
-          Catálogo Blog
-        </span>
-      </a>
-    </li>
 		<li id="menu-item-simple" >
       <a href={{configuracion_link}}>
         <span class="item-title">
@@ -183,6 +176,22 @@
   </ul>
   <ul id="menu-items" class="nav navbar-nav navbar-right">
     {{#if currentUser}}
+			{{#if isAdmin}}
+				<li id="menu-item-simple" >
+					<a href={{home_admin_link}}>
+						<span class="item-title">
+							Home Admin
+						</span>
+					</a>
+				</li>
+				<li id="menu-item-simple" >
+					<a href={{configuracion_link}}>
+						<span class="item-title">
+							Configuración
+						</span>
+					</a>
+				</li>
+			{{/if}}
 			<li id="menu-item-simple" >
 				<a href="#" id="logout">
 					<i class="material-icons left" style="line-height:20px;height:30px">account_circle</i>

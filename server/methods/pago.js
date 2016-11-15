@@ -1,15 +1,35 @@
 import {Meteor} from "meteor/meteor";
 import {Pago} from "/lib/collections/pagos.js";
+import {Tarjeta} from "/lib/collections/tarjetas.js";
+
+function getUserName(userObject){
+  if(userObject.services.google){
+    return userObject.services.google.name;
+  }
+  if(userObject.services.facebook){
+    return userObject.services.facebook.name;
+  }
+  return userObject.profile.name;
+}
+
+function getUserEmail(userObject){
+  if(userObject.services.google){
+    return userObject.services.google.email;
+  }
+  if(userObject.services.facebook){
+    return userObject.services.facebook.email;
+  }
+  return userObject.emails[0].address;
+}
 
 Meteor.methods({
   'createDonacion':function(total,tarjetaId){
     var user = Meteor.users.findOne({_id:this.userId});
+    userName = getUserName(user);
+    userEmail = getUserEmail(user);
     userId = this.userId;
     var tarjeta = Tarjeta.findOne(tarjetaId);
-    if(!user.profile.domicilio){
-      throw new Meteor.Error('falta-dir', 'Falta dar de alta dirección');
-    }
-    var description= "Donacion de "+user.profile.name+" a las "+Date.now();
+    var description= "Donacion de "+userName+" a las "+Date.now();
     self = this;
     var fut = new Future();
     var chargeCreate = Meteor.wrapAsync(conekta.Charge.create,conekta.Charge);
@@ -21,9 +41,9 @@ Meteor.methods({
       "reference_id":"9839-wolf_pack",
       "card": tarjeta.token,
       "details": {
-        "name": user.profile.name,
-        "phone": "N/A",
-        "email": user.profile.email,
+        "name": userName,
+        "phone": "8888888888",
+        "email": userEmail,
         "customer": {
           "logged_in": true,
           "successful_purchases": 14,
@@ -32,7 +52,11 @@ Meteor.methods({
           "offline_payments": 4,
           "score": 9
         },
-        "line_items": pedidoCantPrecio,
+        "line_items": [{
+          name:"Donación Única Unidos",
+          description: "Imported From Mex.",
+          unit_price: total*100,
+          quantity: 1}],
         "billing_address": {
           "street1":"user.profile.domicilio.calle+user.profile.domicilio.numero",
           "street2": null,
@@ -51,7 +75,7 @@ Meteor.methods({
         if(err){
           charge = err.message_to_purchaser;
           console.log(err);
-          fut.return({msg:err,succes:0});
+          fut.return({msg:err,success:0});
         }
         else{
           charge = res.toObject();
@@ -62,12 +86,13 @@ Meteor.methods({
           });
 
           // Meteor.call('correoPedidoCobrado',pedidoId);
-          fut.return({succes:1});
+          fut.return({msg:charge,success:1});
         }
     });
     var result = fut.wait();
-    if(result.succes===0){
+    if(result.success===0){
       throw new Meteor.Error('falta-dir', result.msg.message_to_purchaser);
     }
+    return result.sucess;
   }
 });
