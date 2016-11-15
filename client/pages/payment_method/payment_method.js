@@ -35,8 +35,7 @@ errorResponseHandler = function(error) {
 
 Template.payment_method.rendered = function(){
   $('.modal-trigger').leanModal();
-  Session.set("cantidadADonar",500);
-  Session.set("tipoDonacion","Unica");
+  Session.setPersistent("tipoDonacion","Unica");
 };
 
 Template.payment_method.helpers({
@@ -59,7 +58,7 @@ Template.payment_method.helpers({
 		}
   },
   cantidadADonar(){
-    return Session.get("cantidadADonar");
+    return Session.get("donateAmount");
   },
   tipoDonacion(){
     return Session.get("tipoDonacion");
@@ -153,7 +152,7 @@ Template.payment_method.events({
   "click #confirmaPago":function(e){
     console.log("entro");
     if(Session.get("tipoDonacion")==="Unica"){
-      Meteor.call('createDonacion',Session.get("cantidadADonar"),Session.get("selectedTarjeta")._id,
+      Meteor.call('createDonacion',Session.get("donateAmount"),Session.get("selectedTarjeta")._id,
       function(error,success){
         if(error){
           Materialize.toast(error.reason);
