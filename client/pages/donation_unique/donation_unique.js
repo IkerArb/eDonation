@@ -1,5 +1,5 @@
 Template.donation_unique.rendered = function(){
-}
+};
 
 Template.donation_unique.helpers({
 	isSpecifiedDonation: function(){

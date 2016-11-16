@@ -1,4 +1,10 @@
 <template name="payment_method">
+  <style>
+    .selected{
+      background-color: #009688 !important;
+      color: white;
+    }
+  </style>
   <div class="container center-align">
     <div class="row">
       <div class="col s6">
@@ -27,26 +33,14 @@
     </div>
     {{/each}}
     <div class="row pay-card">
-      <div class="col s12 no-margin-top z-depth-1">
-          <button class="pay-card-button modal-trigger" href="#modal1">
-            <div class="row pay-card-details">
-              <div class="col s4 offset-s4">
-                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-              </div>
-            </div>
-          </button>
+      <div class="col center s12 no-margin-top z-depth-1 pay-card-details modal-trigger" href="#modal1">
+        <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
       </div>
     </div>
     {{#if selectedCard}}
       <div class="row pay-card">
-        <div class="col s12 no-margin-top z-depth-1 teal modal-trigger" href="#modalConfirma">
-            <button class="pay-card-button">
-              <div class="row pay-card-details">
-                <div class="col s4 offset-s4">
-                  <h2>Pagar</h2>
-                </div>
-              </div>
-            </button>
+        <div class="col s12 pay-card-details no-margin-top z-depth-1 teal modal-trigger" href="#modalConfirma">
+            <h2 class="pay-card-text">Pagar</h2>
         </div>
       </div>
     {{/if}}
@@ -59,10 +53,36 @@
       <p><i>Ingresa los datos de tu nueva tarjeta para agregarla a tu cuenta</i></p>
       <!-- Modal Form -->
       <form>
+         <div class="form-group">
+            <!-- <label for="country">País</label> -->
+            <p>Tipo de Tarjeta</p>
+            <select class="form-control" id="exampleSelect1">
+              <option></option>
+              <option>Master Card</option>
+              <option>American Express</option>
+              <option>VISA</option>
+              <option>France</option>
+            </select>
+          </div>
         <div class="form-group">
           <!-- <label for="cardNumber">Número de tarjeta</label> -->
-          <p>Nombre de portador</p>
-          <input type="text" class="form-control" id="nameHolder" placeholder="Eugenio José Martínez Ramos">
+          <p>Nombre del titular</p>
+          <input type="text" class="form-control" id="nameHolder" placeholder="Eugenio José">
+        </div>
+        <div class="form-group">
+          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+          <p>Apellidos</p>
+          <input type="text" class="form-control" id="lastnameHolder" placeholder="Martínez Ramos">
+        </div>
+        <div class="form-group">
+          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+          <p>Ciudad</p>
+          <input type="text" class="form-control" id="city" placeholder="Monterrey">
+        </div>
+        <div class="form-group">
+          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+          <p>Estado</p>
+          <input type="text" class="form-control" id="state" placeholder="Nuevo León">
         </div>
         <div class="form-group">
           <!-- <label for="cardNumber">Número de tarjeta</label> -->
@@ -75,15 +95,15 @@
           <!-- <input type="text" class="form-control" id="cardNumber" placeholder="01/16"> -->
               <strong style="padding-bottom:0px;">Mes</strong>
               <select class="form-control" id="expirationMonth" style="padding-bottom:5px;">
-                <option value="01">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09">09</option>
+                <option value="1">01</option>
+                <option value="2">02</option>
+                <option value="3">03</option>
+                <option value="4">04</option>
+                <option value="5">05</option>
+                <option value="6">06</option>
+                <option value="7">07</option>
+                <option value="8">08</option>
+                <option value="9">09</option>
                 <option value="10">10</option>
                 <option value="11">11</option>
                 <option value="12">12</option>
@@ -102,7 +122,8 @@
 
         </div>
         <div class="form-group" style="padding-bottom:10px;">
-          <p>CVC</p>
+          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+          <p>Clave</p>
           <input type="password" class="form-control" id="cardKey" placeholder="080">
         </div>
 
@@ -110,7 +131,7 @@
 
     </div>
     <div class="modal-footer">
-      <a href="#!" id="altaTarjeta" class="modal-action modal-close waves-effect waves-green btn-flat ">Ingresar tarjeta</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Ingresar tarjeta</a>
     </div>
   </div>
 
