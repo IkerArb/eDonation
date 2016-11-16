@@ -1,30 +1,5 @@
-
-
-
-
-// Template.payment_method.events({
-
-//   "click #package1": function(){
-//   	$("#package1").css("color", "red");
-//   }
-//   "click #package2": function(){
-//   	$("#package1").css("color", "red");
-//   }
-//   "click #package3": function(){
-//   	$("#package1").css("color", "red");
-//   }
-//   "click #package4": function(){
-//   	$("#package1").css("background-color", "red");
-//   }
-
-// });
-$("#package1").click(function(){
-    $("#package1").css("color", "red");
-});
 Template.donation_unique.rendered = function(){
-	Session.set("specifyDonation", false);
-	Session.set("donationSelected", false);
-}
+};
 
 Template.donation_unique.helpers({
 	isSpecifiedDonation: function(){
@@ -32,42 +7,83 @@ Template.donation_unique.helpers({
 	},
 	isDonationSelected: function(){
 		return Session.get("donationSelected");
+	},
+	donateAmount: function(){
+		if(Session.get("specifyDonation")){
+			return Session.get("donateAmount");
+		}
+	},
+	isSelected50: function(){
+		if(Session.get("donationSelected")){
+			if(Session.get("donateAmount")===50){
+				return 'cantidadSeleccionada';
+			}
+		}
+	},
+	isSelected100: function(){
+		if(Session.get("donationSelected")){
+			if(Session.get("donateAmount")===100){
+				return 'cantidadSeleccionada';
+			}
+		}
+	},
+	isSelected200: function(){
+		if(Session.get("donationSelected")){
+			if(Session.get("donateAmount")===200){
+				return 'cantidadSeleccionada';
+			}
+		}
+	},
+	isSelectedOther: function(){
+		if(Session.get("specifyDonation")){
+			return 'cantidadSeleccionada';
+		}
 	}
 });
 
 Template.donation_unique.events({
 	"click #specificDonation": function(e){
-		Session.set("specifyDonation", true);
+		Session.setPersistent("specifyDonation", true);
+		Session.setPersistent("donationSelected", false);
+		Session.setPersistent("donateAmount",0);
 	},
 	"click #donate50": function(e){
-		Session.set("specifyDonation", false);
-		Session.set("donationSelected", true);
-		Session.set("donateAmount", 50);
+		Session.setPersistent("specifyDonation", false);
+		Session.setPersistent("donationSelected", true);
+		Session.setPersistent("donateAmount", 50);
 	},
 	"click #donate100": function(e){
-		Session.set("specifyDonation", false);
-		Session.set("donationSelected", true);
-		Session.set("donateAmount", 100);
+		Session.setPersistent("specifyDonation", false);
+		Session.setPersistent("donationSelected", true);
+		Session.setPersistent("donateAmount", 100);
 	},
 	"click #donate200": function(e){
-		Session.set("specifyDonation", false);
-		Session.set("donationSelected", true);
-		Session.set("donateAmount", 200);
+		Session.setPersistent("specifyDonation", false);
+		Session.setPersistent("donationSelected", true);
+		Session.setPersistent("donateAmount", 200);
 	},
 	"click #nextBtnOther": function(e){
-		Session.set("donationSelected", false);
-		var Amount = $("#amount").val();
-	    if(Amount===""){
-	      $("#amount").addClass("invalid");
-	      Materialize.toast("Porfavor ingresa la cantidad que desea donar",4000);
-	    }
-	    else if(isNaN(Amount)){
-	    	$("#amount").addClass("invalid");
-	      Materialize.toast("La cantidad que ingresaste no es válida",4000);
-	    }
-
-
-		Session.set("donateAmount", Amount);
+		e.preventDefault();
+	  if(Session.get("donateAmount")<50){
+			Materialize.toast("Favor de ingresar una cantidad mayor a 50",3000);
+		}
+		else{
+			FlowRouter.go("payment_method");
+		}
+	},
+	"keyup #amount": function(e){
+		e.preventDefault();
+		var cantidad = Number(e.target.value);
+		if(cantidad>=50){
+			Session.setPersistent("donateAmount",cantidad);
+		}
+	},
+	"click #nextBtnPackage":function(e){
+		if(Session.get("donationSelected")){
+			FlowRouter.go("payment_method");
+		}
+		else{
+			Materialize.toast("Favor de elegir o ingresar una cantidad válida",3000);
+		}
 	}
 });
-

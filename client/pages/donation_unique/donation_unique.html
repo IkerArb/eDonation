@@ -1,11 +1,17 @@
 <template name="donation_unique">
+  <style>
+    .cantidadSeleccionada{
+      color: white;
+      background-color: #009688 !important;
+    }
+  </style>
   <div class="container center-align">
     <h2 style="color:#D97D30">Donación única</h2>
     <div class="row">
       <div class="col s3" style="cursor:pointer" id="donate50">
         <div class="card-shop-collection">
           <div class="card-shop-item">
-            <div class="card-shop-item-content hoverable">
+            <div class="card-shop-item-content hoverable {{isSelected50}}">
               <div class="title-container">
                 <h2 class="center-align">$50</h2>
               </div>
@@ -22,7 +28,7 @@
       <div class="col s3" style="cursor:pointer" id="donate100">
         <div class="card-shop-collection">
           <div class="card-shop-item">
-            <div class="card-shop-item-content hoverable">
+            <div class="card-shop-item-content hoverable {{isSelected100}}">
               <div class="title-container">
                  <h2 class="center-align">$100</h2>
               </div>
@@ -39,7 +45,7 @@
       <div class="col s3">
         <div class="card-shop-collection" style="cursor:pointer" id="donate200">
           <div class="card-shop-item">
-            <div class="card-shop-item-content hoverable">
+            <div class="card-shop-item-content hoverable {{isSelected200}}">
               <div class="title-container">
                  <h2 class="center-align">$200</h2>
               </div>
@@ -56,7 +62,7 @@
       <div class="col s3">
         <div class="card-shop-collection" style="cursor:pointer" id="specificDonation">
           <div class="card-shop-item">
-            <div class="card-shop-item-content hoverable">
+            <div class="card-shop-item-content hoverable {{isSelectedOther}}">
               <div class="title-container">
                  <h2 class="center-align">Otro</h2>
               </div>
@@ -76,15 +82,15 @@
       <p>Ingresa la cantidad que quieres donar</p>
       <div class="row">
         <div class="col s4 offset-s4">
-           <input id="amount" style="font-size:25px" type="text" class="form-control center-align" placeholder="$0.00">
+           <input id="amount" style="font-size:25px" type="number" class="form-control center-align" placeholder="0.00" value={{donateAmount}}>
         </div>
       </div>
     </div>
-    <button class="btn waves-effect waves-light" type="submit" style="background-color:#D97D30" id="nextBtnOther"> Siguiente </button>
+    <button class="btn waves-effect waves-light" style="background-color:#D97D30" id="nextBtnOther"> Siguiente </button>
   {{/if}}
 
   {{#if isDonationSelected}}
-    <button class="btn waves-effect waves-light" type="submit" style="background-color:#D97D30" > Siguiente </button>
+    <button class="btn waves-effect waves-light" style="background-color:#D97D30" id="nextBtnPackage" > Siguiente </button>
   {{/if}}
   </div>
 

@@ -12,6 +12,7 @@ aldeed:schema-index@1.1.0
 aldeed:simple-schema@1.5.3
 aldeed:tabular@1.6.1
 allow-deny@1.0.5
+amplify@1.0.0
 autoupdate@1.2.11
 babel-compiler@6.9.1
 babel-runtime@0.1.11
@@ -120,6 +121,7 @@ templating-runtime@1.2.15
 templating-tools@1.0.5
 tracker@1.1.0
 twitter@1.1.11
+u2622:persistent-session@0.4.4
 ui@1.0.12
 underscore@1.0.9
 url@1.0.10
