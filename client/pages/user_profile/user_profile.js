@@ -56,31 +56,7 @@ Template.user_profile.helpers({
 		  if(Meteor.user().services.facebook){
 		    return Meteor.user().services.facebook.email;
 		  }
-		return Meteor.user().profile.email; 
-  },
-  selectedCard(){
-    return Session.get("selectedTarjeta");
-  },
-  lastDigitsSeleccionada(){
-    return Session.get("selectedTarjeta").last_digits;
-  },
-  brandSeleccionada(){
-    var tarjeta = Session.get("selectedTarjeta");
-		if(tarjeta.brand=='amex'){
-			return 'fa-cc-amex';
-		}
-		if(tarjeta.brand=='visa'){
-			return 'fa-cc-visa';
-		}
-		if(tarjeta.brand=='mastercard'){
-			return 'fa-cc-mastercard';
-		}
-  },
-  cantidadADonar(){
-    return Session.get("donateAmount");
-  },
-  tipoDonacion(){
-    return Session.get("tipoDonacion");
+		return Meteor.user().profile.email;
   },
   tarjetas(){
     return Tarjeta.find();
@@ -96,11 +72,6 @@ Template.user_profile.helpers({
 		if(tarjeta.brand=='mastercard'){
 			return 'fa-cc-mastercard';
 		}
-  },
-  isSelected(){
-    if(Session.get('selectedTarjeta')._id==this._id){
-      return 'selected';
-    }
   }
 });
 
@@ -150,36 +121,14 @@ Template.user_profile.events({
   },
   "click .delete-card":function(e){
     console.log(e.target);
-    var borraSession = Session.get('selectedTarjeta')._id == e.target.id;
     var tarjetaId = e.target.id;
-    console.log(tarjetaId);
     Meteor.call("bajaTarjeta",tarjetaId,function(error,success){
       if(error){
         Materialize.toast(error.reason,4000);
       }
       else{
         Materialize.toast("Baja exitosa de tarjeta",4000);
-        if(borraSession){
-          Session.set('selectedTarjeta','');
-        }
       }
     });
-  },
-  "click .elige-tarjeta":function(e){
-    Session.set('selectedTarjeta',this);
-  },
-  "click #confirmaPago":function(e){
-    console.log("entro");
-    if(Session.get("tipoDonacion")==="Unica"){
-      Meteor.call('createDonacion',Session.get("donateAmount"),Session.get("selectedTarjeta")._id,
-      function(error,success){
-        if(error){
-          Materialize.toast(error.reason);
-        }
-        else{
-          Materialize.toast("Donación Única Exitosa",4000);
-        }
-      });
-    }
   }
 });
