@@ -1,7 +1,7 @@
 
 
 Meteor.publish("users_all", function() {
-	if(Users.isInRole(this.userId, "funcionario")) {
+	if(Users.isInRole(this.userId, "admin")) {
 		return Meteor.users.find({}, {});
 	}
 	return this.ready();
