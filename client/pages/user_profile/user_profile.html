@@ -43,39 +43,35 @@
 			      </div>
 			    </div>
 			 {{/each}}
-			 <div class="row pay-card">
-		      <div class="col s12 no-margin-top z-depth-1">
-		          <button class="pay-card-button modal-trigger" href="#modal1"><div class="row pay-card-details">
-		            <div class="col s4 offset-s4">
-		              <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-		            </div>
-		          </div></button>
-		      </div>
-		    </div>
+		    <div class="row pay-card container center" style="padding-left:25%; padding-right:25%">
+		        <div class="col s12 pay-card-details no-margin-top z-depth-1 teal modal-trigger" href="#addCard">
+		            <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+		        </div>
+     		 </div>
 		    <!-- FIN DE DESPLEGAR TARJETAS -->
 
 		    <!-- MODAL PARA AGREGAR TARJETAS -->
-			  <div id="modal1" class="modal modal-fixed-footer container">
-			    <div class="modal-content modal-body">
-			      <h3 style="color:#ee6e73">Nueva Tarjeta</h3>
-			      <p><i>Ingresa los datos de tu nueva tarjeta para agregarla a tu cuenta</i></p>
+			  <div id="addCard" class="modal modal-fixed-footer" style="width:30%">
+			    <div class="modal-content modal-body container" >
+			      <h2>Nueva Tarjeta</h2>
+			      <!-- <p><i>Ingresa los datos de tu nueva tarjeta para agregarla a tu cuenta</i></p> -->
 			      <!-- Modal Form -->
 			      <form>
 			        <div class="form-group">
 			          <!-- <label for="cardNumber">Número de tarjeta</label> -->
-			          <p>Nombre de portador</p>
+			          <p class="typo">Nombre de portador</p>
 			          <input type="text" class="form-control" id="nameHolder" placeholder="Eugenio José Martínez Ramos">
 			        </div>
 			        <div class="form-group">
 			          <!-- <label for="cardNumber">Número de tarjeta</label> -->
-			          <p>Número de tarjeta</p>
+			          <p class="typo">Número de tarjeta</p>
 			          <input type="text" class="form-control" id="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX">
 			        </div>
 			        <div class="form-group">
 			          <!-- <label for="cardNumber">Número de tarjeta</label> -->
-			          <p>Fecha de expiración</p>
+			          <p class="typo">Fecha de expiración</p>
 			          <!-- <input type="text" class="form-control" id="cardNumber" placeholder="01/16"> -->
-			              <strong style="padding-bottom:0px;">Mes</strong>
+			              <p style="padding-bottom:0px;">Mes</p>
 			              <select class="form-control" id="expirationMonth" style="padding-bottom:5px;">
 			                <option value="01">01</option>
 			                <option value="02">02</option>
@@ -90,7 +86,7 @@
 			                <option value="11">11</option>
 			                <option value="12">12</option>
 			              </select>
-			               <strong style="padding-bottom:0px; padding-top:10px;">Año</strong>
+			               <p style="padding-bottom:0px; padding-top:10px;">Año</p>
 			                <select class="form-control" id="expirationYear">
 			                  <option value="16">16</option>
 			                  <option value="17">17</option>
@@ -103,11 +99,11 @@
 			                </select>
 
 			        </div>
-			        <div class="form-group" style="padding-bottom:10px;">
-			          <p>CVC</p>
-			          <input type="password" class="form-control" id="cardKey" placeholder="080">
+			        <div class="form-group">
+			          <p class="typo">CVC</p>
+			          <input style="padding-bottom:10px;" type="password" class="form-control" id="cardKey" placeholder="080">
 			        </div>
-
+					<br>
 			      </form>
 
 			    </div>
@@ -118,9 +114,8 @@
 			  <!-- FIN DE MODAL PARA AGREGAR TARJETA -->
 
 	    </div>
-	    <div id="payments" class="col s12">Test 3</div>
 
-	    <div id="test1" class="col s12">
+	    <div id="payments" class="col s12">
 				<div class="col s4">
 					<div class="ticket">
 					  <h2 class="ticket-highlight">No. 4682167</h2>
@@ -243,7 +238,6 @@
 				</div>
 
 	    </div>
-	    <div id="test4" class="col s12">Test 4</div>
 
 	  </div>
 	</div><!-- container -->
