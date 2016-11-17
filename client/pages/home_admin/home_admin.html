@@ -1,6 +1,78 @@
 <template name="home_admin">
-  <!-- codigo de la pagina-->
   <div class="container">
+    <h1>Resumen de donaciones</h1>
+    <div class="row">
+      <div class="col s2">
+        <div class="select-drop">
+          <select name="mes" id="mesFiltrado">
+            <option selected disabled>Mes</option>
+            <option value="">Todos</option>
+            <option value=0>Enero</option>
+            <option value=1>Febrero</option>
+            <option value=2>Marzo</option>
+            <option value=3>Abril</option>
+            <option value=4>Mayo</option>
+            <option value=5>Junio</option>
+            <option value=6>Julio</option>
+            <option value=7>Agosto</option>
+            <option value=8>Septiembre</option>
+            <option value=9>Octubre</option>
+            <option value=10>Noviembre</option>
+            <option value=11>Diciembre</option>
+          </select>
+        </div>
+      </div>
+      <div class="col s2">
+        <div class="select-drop">
+          <select name="anio" id="anioFiltrado">
+            <option selected disabled>Año</option>
+            <option value="">Todos</option>
+            <option value=2016>2016</option>
+            <option value=2017>2017</option>
+            <option value=2018>2018</option>
+            <option value=2019>2019</option>
+            <option value=2020>2020</option>
+            <option value=2021>2021</option>
+            <option value=2022>2022</option>
+            <option value=2023>2023</option>
+            <option value=2024>2024</option>
+            <option value=2025>2025</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s4">
+        <div class="admin-ticket">
+          <div class="admin-ticket-content">
+            <div class="table-responsive">
+              <h2 class="admin-ticket-title">Cantidad meta</h2>
+            </div>
+          </div>
+          <h2 class="admin-ticket-highlight">$ 100,000.00</h2>
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="admin-ticket">
+          <div class="admin-ticket-content">
+            <div class="table-responsive">
+              <h2 class="admin-ticket-title">Cantidad total recaudada</h2>
+            </div>
+          </div>
+          <h2 class="admin-ticket-highlight">$ 45,500.00</h2>
+        </div>
+      </div>
+      <div class="col s4">
+        <div class="admin-ticket">
+          <div class="admin-ticket-content">
+            <div class="table-responsive">
+              <h2 class="admin-ticket-title">Número de Donaciones</h2>
+            </div>
+          </div>
+          <h2 class="admin-ticket-highlight">634</h2>
+        </div>
+      </div>
+    </div>
     <h3>Tabla Pagos</h3>
     {{> tabular table=TabularTables.Pago selector=selector class="table table-striped table-bordered table-condensed"}}
   </div>
