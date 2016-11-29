@@ -27,7 +27,7 @@ Template.navbarFree.helpers({
     if(Meteor.user().services.facebook){
       return Meteor.user().services.facebook.email;
     }
-    return Meteor.user().emails[0].adress;
+    return Meteor.user().emails[0].address;
   }
 });
 
@@ -77,7 +77,7 @@ Template.layout.events({
     var password = $('#loginPassword').val();
     Meteor.loginWithPassword(email,password,function(error){
       if(error){
-        console.log(error);
+        Materialize.toast(error.reason,4000);
       }
       else{
         $('#login-register-modal').closeModal();
@@ -94,16 +94,23 @@ Template.layout.events({
   'click #signupButton': function(e){
     e.preventDefault();
     var user = {};
+    user.profile = {name: $("#signupName").val()};
     user.email = $("#signupEmail").val();
     user.password = $("#signupPassword").val();
-    Accounts.createUser(user,function(error){
-      if(error){
-        console.log(error);
-      }
-      else{
-        $('#login-register-modal').closeModal();
-      }
-    });
+    if(user.password===$("#signupConfirmPassword")){
+      Accounts.createUser(user,function(error){
+        if(error){
+          Materialize.toast(error.reason,4000);
+        }
+        else{
+          Materialize.toast("Registro exitoso",4000);
+          $('#login-register-modal').closeModal();
+        }
+      });
+    }
+    else{
+      Materialize.toast("Las contraseñas no coinciden",4000);
+    }
   },
   'click #login': function(e){
     $('#login-register-modal').openModal();

@@ -1,6 +1,26 @@
 import {Schemas} from '/lib/collections/schema.js';
 import {User_Collection} from '/lib/collections/users.js';
 
+function getUserName(userObject){
+  if(userObject.services.google){
+    return userObject.services.google.name;
+  }
+  if(userObject.services.facebook){
+    return userObject.services.facebook.name;
+  }
+  return userObject.profile.name;
+}
+
+function getUserEmail(userObject){
+  if(userObject.services.google){
+    return userObject.services.google.email;
+  }
+  if(userObject.services.facebook){
+    return userObject.services.facebook.email;
+  }
+  return userObject.emails[0].address;
+}
+
 Meteor.methods({
   // Método para revisar si el correo está disponible, nada más revisa que sea igual a 0
   // la búsqueda de ese elemento
@@ -24,6 +44,9 @@ Meteor.methods({
   },
   deleteUser: function(userId){
     Meteor.users.update({_id:userId},{$set:{roles:["borrado"]}});
+  },
+  restoreUser: function(userId){
+    Meteor.users.update({_id:userId},{$set:{roles:["admin"]}});
   },
   updateUser: function(doc,docId){
     check(doc,Schemas.User);
@@ -49,11 +72,13 @@ Meteor.methods({
   },
   'saveClientConekta':function(tokenId){
     var user = Meteor.users.findOne({_id:this.userId});
+    var email = getUserEmail(user);
+    var name = getUserName(user);
     var fut = new Future();
     var clientCreate = Meteor.wrapAsync(conekta.Customer.create,conekta.Customer);
     clientCreate({
-      "name": user.profile.name,
-      "email": "ikerarbulu@gmail.com",
+      "name": name,
+      "email": email,
       "phone": "",
       "cards": [tokenId]
     }, function(err, res) {
@@ -68,5 +93,9 @@ Meteor.methods({
       throw new Meteor.Error('falta-dir', result.msg.message_to_purchaser);
     }
     return result.conekta;
+  },
+  'updateNameAndEmail':function(userId,name,email){
+    Meteor.users.update(userId,{$set:{"profile.name":name,"emails.0.address":email}});
+    return userId;
   }
 });

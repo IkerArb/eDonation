@@ -82,7 +82,7 @@ Meteor.methods({
           console.log(charge);
           var pagoId =Pago.insert({
             amount:total,
-            tarjetaId:tarjetaId
+            tarjeta:{last_digits:tarjeta.last_digits,brand:tarjeta.brand}
           });
 
           // Meteor.call('correoPedidoCobrado',pedidoId);

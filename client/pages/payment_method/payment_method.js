@@ -34,7 +34,6 @@ errorResponseHandler = function(error) {
 };
 
 Template.payment_method.rendered = function(){
-  $('.modal-trigger').leanModal();
   Session.setPersistent("tipoDonacion","Unica");
 };
 
@@ -162,5 +161,8 @@ Template.payment_method.events({
         }
       });
     }
+  },
+  "click #hacerPago": function(e){
+    $("#modalConfirma").openModal();
   }
 });

@@ -19,8 +19,35 @@
 	    			<p class="typo"> Correo:</p> <p class="flow-text"> {{email}} </p>
 	    		</div>
 	    		<div class="col s4">
+						{{#if noRedesSociales}}
+							<button type="button" class="btn" id="editProfile">Editar Perfil</button>
+						{{/if}}
 	    		</div>
 	    	</div>
+				{{#if noRedesSociales}}
+					<div id="editUser" class="modal modal-fixed-footer" style="width:30%">
+				    <div class="modal-content modal-body container" >
+				      <h2>Editar Perfil</h2>
+				      <!-- <p><i>Ingresa los datos de tu nueva tarjeta para agregarla a tu cuenta</i></p> -->
+				      <!-- Modal Form -->
+				        <div class="form-group">
+				          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+				          <p class="typo">Nombre de usuario</p>
+				          <input type="text" class="form-control" id="nameUser" value={{currentName}}>
+				        </div>
+								<div class="form-group">
+				          <!-- <label for="cardNumber">Número de tarjeta</label> -->
+				          <p class="typo">Correo</p>
+				          <input type="email" class="form-control" id="emailUser" value={{currentMail}}>
+				        </div>
+						<br>
+
+				    </div>
+				    <div class="modal-footer">
+				      <a href="#!" id="actualizarPerfil" class="modal-action modal-close waves-effect waves-green btn-flat ">Actualizar Datos</a>
+				    </div>
+				  </div>
+				{{/if}}
 	    </div>
 
 	    <div id="cards" class="col s12">
@@ -116,126 +143,49 @@
 	    </div>
 
 	    <div id="payments" class="col s12">
-				<div class="col s4">
-					<div class="ticket">
-					  <h2 class="ticket-highlight">No. 4682167</h2>
-						<div class="ticket-content">
-				    <!-- <p class="ticket-title">Ticket #001</p> -->
-					    <div class="table-responsive">
-						    <h2 class="ticket-title">¡Gracias por tu donación!</h2>
-					    <!-- <h2 class="ticket-subtitle"> Recogeremos tu ropa en el lugar y hora indicados. Esta confirmación se enviará automáticamente al correo electrónico registrado. Aquí un resumen de tu pedido:</h2> -->
-					      <table>
-						      <thead>
-						        <tr>
-						          <th>Tarjeta</th>
-						          <th>Cantidad</th>
-						          <th>Donación</th>
-											<th>Fecha</th>
-						        </tr>
-						      </thead>
-					        <tbody>
-					          <tr>
-					            <td>****123</td>
-					            <td>$500</td>
-					            <td>Única</td>
-											<td>11/10/2016</td>
-					          </tr>
-					          <tr class="bottom">
-					            <td></td>
-					            <td></td>
-					            <td></td>
-											<td></td>
-					          </tr>
-					        </tbody>
-					      </table>
-					    </div>
-				    <!-- <h2 class="ticket-subtitle">Nota:</h2> -->
-					    <div class="ticket-subtitle">
-					      <p>*Para dudas o aclaraciones envía un correo a aclaraciones@unidos.com</p>
-				      </div>
-						</div>
-				  </div>
-				</div>
-				<div class="col s4">
-					<div class="ticket">
-					  <h2 class="ticket-highlight">No. 4682167</h2>
-						<div class="ticket-content">
-				    <!-- <p class="ticket-title">Ticket #001</p> -->
-					    <div class="table-responsive">
-						    <h2 class="ticket-title">¡Gracias por tu donación!</h2>
-					    <!-- <h2 class="ticket-subtitle"> Recogeremos tu ropa en el lugar y hora indicados. Esta confirmación se enviará automáticamente al correo electrónico registrado. Aquí un resumen de tu pedido:</h2> -->
-					      <table>
-						      <thead>
-						        <tr>
-						          <th>Tarjeta</th>
-						          <th>Cantidad</th>
-						          <th>Donación</th>
-											<th>Fecha</th>
-						        </tr>
-						      </thead>
-					        <tbody>
-					          <tr>
-					            <td>****123</td>
-					            <td>$500</td>
-					            <td>Única</td>
-											<td>11/10/2016</td>
-					          </tr>
-					          <tr class="bottom">
-					            <td></td>
-					            <td></td>
-					            <td></td>
-											<td></td>
-					          </tr>
-					        </tbody>
-					      </table>
-					    </div>
-				    <!-- <h2 class="ticket-subtitle">Nota:</h2> -->
-					    <div class="ticket-subtitle">
-					      <p>*Para dudas o aclaraciones envía un correo a aclaraciones@unidos.com</p>
-				      </div>
-						</div>
-				  </div>
-				</div>
-				<div class="col s4">
-					<div class="ticket">
-					  <h2 class="ticket-highlight">No. 4682167</h2>
-						<div class="ticket-content">
-				    <!-- <p class="ticket-title">Ticket #001</p> -->
-					    <div class="table-responsive">
-						    <h2 class="ticket-title">¡Gracias por tu donación!</h2>
-					    <!-- <h2 class="ticket-subtitle"> Recogeremos tu ropa en el lugar y hora indicados. Esta confirmación se enviará automáticamente al correo electrónico registrado. Aquí un resumen de tu pedido:</h2> -->
-					      <table>
-						      <thead>
-						        <tr>
-						          <th>Tarjeta</th>
-						          <th>Cantidad</th>
-						          <th>Donación</th>
-											<th>Fecha</th>
-						        </tr>
-						      </thead>
-					        <tbody>
-					          <tr>
-					            <td>****123</td>
-					            <td>$500</td>
-					            <td>Única</td>
-											<td>11/10/2016</td>
-					          </tr>
-					          <tr class="bottom">
-					            <td></td>
-					            <td></td>
-					            <td></td>
-											<td></td>
-					          </tr>
-					        </tbody>
-					      </table>
-					    </div>
-				    <!-- <h2 class="ticket-subtitle">Nota:</h2> -->
-					    <div class="ticket-subtitle">
-					      <p>*Para dudas o aclaraciones envía un correo a aclaraciones@unidos.com</p>
-				      </div>
-						</div>
-				  </div>
-				</div>
+
+				{{#each pagosUser}}
+					<div class="col s12 m6">
+						<div class="ticket">
+						  <h2 class="ticket-highlight">{{this._id}}</h2>
+							<div class="ticket-content">
+					    <!-- <p class="ticket-title">Ticket #001</p> -->
+						    <div class="table-responsive">
+							    <h2 class="ticket-title">¡Gracias por tu donación!</h2>
+						    <!-- <h2 class="ticket-subtitle"> Recogeremos tu ropa en el lugar y hora indicados. Esta confirmación se enviará automáticamente al correo electrónico registrado. Aquí un resumen de tu pedido:</h2> -->
+						      <table>
+							      <thead>
+							        <tr>
+							          <th>Tarjeta</th>
+							          <th>Cantidad</th>
+							          <th>Donación</th>
+												<th>Fecha</th>
+							        </tr>
+							      </thead>
+						        <tbody>
+						          <tr>
+						            <td>****-{{this.tarjeta.last_digits}}</td>
+						            <td>${{this.amount}}</td>
+						            <td>Única</td>
+												<td>{{this.createdAt}}</td>
+						          </tr>
+						          <tr class="bottom">
+						            <td></td>
+						            <td></td>
+						            <td></td>
+												<td></td>
+						          </tr>
+						        </tbody>
+						      </table>
+						    </div>
+					    <!-- <h2 class="ticket-subtitle">Nota:</h2> -->
+						    <div class="ticket-subtitle">
+						      <p>*Para dudas o aclaraciones envía un correo a aclaraciones@unidos.com</p>
+					      </div>
+							</div>
+					  </div>
+					</div>
+				{{/each}}
 
 	    </div>
 

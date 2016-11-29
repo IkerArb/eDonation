@@ -41,6 +41,15 @@ Template.configuracion.events({
       Materialize.toast('Se ha borrado el usuario.',4000,'red');
     }
   },
+  "click .restauraUser":function(e){
+    e.preventDefault();
+    var user_id=$(e.target).attr('rel');
+    var confirmAnswer = confirm('Seguro que quieres restaurar el usuario?');
+    if (confirmAnswer) {
+      Meteor.call('restoreUser',user_id);
+      Materialize.toast('Se ha restaurado el usuario.',4000);
+    }
+  },
   // Evento al dar click en button SHOW tabla de puntos de interes
   "click .showUser":function(e){
     e.preventDefault();

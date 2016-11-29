@@ -1,4 +1,5 @@
 import {Tarjeta} from '/lib/collections/tarjetas.js';
+import {Pago} from '/lib/collections/pagos.js';
 
 
 var errorResponseHandler, successResponseHandler, tokenParams;
@@ -56,7 +57,7 @@ Template.user_profile.helpers({
 		  if(Meteor.user().services.facebook){
 		    return Meteor.user().services.facebook.email;
 		  }
-		return Meteor.user().profile.email;
+		return Meteor.user().emails[0].address;
   },
   tarjetas(){
     return Tarjeta.find();
@@ -72,6 +73,18 @@ Template.user_profile.helpers({
 		if(tarjeta.brand=='mastercard'){
 			return 'fa-cc-mastercard';
 		}
+  },
+  pagosUser(){
+    return Pago.find();
+  },
+  noRedesSociales(){
+    return !(Meteor.user().services.facebook||Meteor.user().services.google);
+  },
+  currentName(){
+    return Meteor.user().profile.name;
+  },
+  currentMail(){
+    return Meteor.user().emails[0].address;
   }
 });
 
@@ -130,5 +143,25 @@ Template.user_profile.events({
         Materialize.toast("Baja exitosa de tarjeta",4000);
       }
     });
+  },
+  "click #editProfile": function(e){
+    $("#editUser").openModal();
+  },
+  "click #actualizarPerfil":function(e){
+    var name = $("#nameUser").val();
+    var email = $("#emailUser").val();
+    if(name!==""&&email!==""){
+      Meteor.call("updateNameAndEmail",Meteor.userId(),name,email,function(e,r){
+        if(e){
+          Materialize.toast(e.reason,4000,"red");
+        }
+        else{
+          Materialize.toast("Actualización del Perfil Exitosa",4000,'green');
+        }
+      });
+    }
+    else{
+      Materialize.toast("Favor de llenar los campos correctamente",4000,"red");
+    }
   }
 });

@@ -77,7 +77,7 @@
         <div class="col s12">
           <ul class="tabs">
             <li class="tab col s3"><a href="#login-tab">Login</a></li>
-            <li class="tab col s3"><a href="#signup-tab">Signup</a></li>
+            <li class="tab col s3"><a href="#signup-tab">Registro</a></li>
           </ul>
         </div>
         <div id="login-tab" class="col s12">
@@ -85,7 +85,9 @@
             <fieldset>
               <legend>Login</legend>
 							<input type="text" id="loginEmail" />
+							<label for="loginEmail">Correo</label>
               <input type="password" id="loginPassword" />
+							<label for="loginPassword">Contraseña</label>
             </fieldset>
             <button id="loginButton" class="btn btn-primary">Login</button>
           <h6>or login with the following services</h6>
@@ -105,25 +107,17 @@
         </div>
         <div id="signup-tab" class="col s12">
             <fieldset>
-              <legend>Signup</legend>
+              <legend>Registro</legend>
+							<input type="text" id="signupName">
+							<label for="signupName">Nombre</label>
               <input type="text" id="signupEmail" />
+							<label for="signupEmail">Correo</label>
               <input type="password" id="signupPassword" />
+							<label for="signupPassword">Contraseña</label>
+							<input type="password" id="signupConfirmPassword" />
+							<label for="signupConfirmPassword">Confirmar Contraseña</label>
             </fieldset>
             <button id="signupButton" class="btn btn-primary">Signup</button>
-          <h6>or login with the following services</h6>
-          <!--TODO: Signup with Social apps -->
-          <div class="col s8 offset-s2 m4 offset-m4">
-        		<a id="facebookSignupButton" href="#" class="btn btn-lg btn-block omb_btn-facebook">
-        			<i class="fa fa-facebook"></i>
-        			<span class="hide-on-small-only">Facebook</span>
-        		</a>
-        	</div>
-          <div class="col s8 offset-s2 m4 offset-m4">
-        		<a id="googleSignupButton" href="#" class="btn btn-lg btn-block omb_btn-google">
-        			<i class="fa fa-google"></i>
-        			<span class="hide-on-small-only">Google</span>
-        		</a>
-        	</div>
         </div>
       </div>
     </div>
