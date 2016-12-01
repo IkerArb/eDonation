@@ -97,7 +97,7 @@ Template.layout.events({
     user.profile = {name: $("#signupName").val()};
     user.email = $("#signupEmail").val();
     user.password = $("#signupPassword").val();
-    if(user.password===$("#signupConfirmPassword")){
+    if(user.password===$("#signupConfirmPassword").val()){
       Accounts.createUser(user,function(error){
         if(error){
           Materialize.toast(error.reason,4000);

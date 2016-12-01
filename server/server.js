@@ -50,7 +50,7 @@ Meteor.startup(function() {
 });
 
 
-var verifyEmail = true;
+var verifyEmail = false;
 
 Accounts.config({ sendVerificationEmail: verifyEmail });
 
